@@ -1,9 +1,9 @@
-package com.alessandro54.jwtspring.service;
+package com.evoteam.eatsave.service;
 
-import com.alessandro54.jwtspring.domain.Role;
-import com.alessandro54.jwtspring.repository.RoleRepository;
-import com.alessandro54.jwtspring.repository.UserRepository;
-import com.alessandro54.jwtspring.domain.User;
+import com.evoteam.eatsave.domain.Role;
+import com.evoteam.eatsave.repository.RoleRepository;
+import com.evoteam.eatsave.repository.UserRepository;
+import com.evoteam.eatsave.domain.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

@@ -1,7 +1,7 @@
-package com.alessandro54.jwtspring.service;
+package com.evoteam.eatsave.service;
 
-import com.alessandro54.jwtspring.domain.Role;
-import com.alessandro54.jwtspring.domain.User;
+import com.evoteam.eatsave.domain.Role;
+import com.evoteam.eatsave.domain.User;
 
 import java.util.List;
 

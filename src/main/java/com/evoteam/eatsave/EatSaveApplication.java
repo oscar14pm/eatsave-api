@@ -1,8 +1,8 @@
-package com.alessandro54.jwtspring;
+package com.evoteam.eatsave;
 
-import com.alessandro54.jwtspring.domain.Role;
-import com.alessandro54.jwtspring.service.UserService;
-import com.alessandro54.jwtspring.domain.User;
+import com.evoteam.eatsave.domain.Role;
+import com.evoteam.eatsave.service.UserService;
+import com.evoteam.eatsave.domain.User;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
