@@ -1,4 +1,4 @@
-package com.evoteam.eatsave.domain;
+package com.evoteam.eatsave.api.domain.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,5 +17,6 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 }

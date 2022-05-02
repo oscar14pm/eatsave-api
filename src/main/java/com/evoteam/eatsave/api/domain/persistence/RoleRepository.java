@@ -1,6 +1,6 @@
-package com.evoteam.eatsave.repository;
+package com.evoteam.eatsave.api.domain.persistence;
 
-import com.evoteam.eatsave.domain.Role;
+import com.evoteam.eatsave.api.domain.models.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RoleRepository extends JpaRepository<Role, Long> {

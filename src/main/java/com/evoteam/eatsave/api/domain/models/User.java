@@ -1,4 +1,4 @@
-package com.evoteam.eatsave.domain;
+package com.evoteam.eatsave.api.domain.models;
 
 
 import lombok.*;

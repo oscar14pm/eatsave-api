@@ -1,4 +1,4 @@
-package com.alessandro54.jwtspring.filter;
+package com.evoteam.eatsave.filter;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;

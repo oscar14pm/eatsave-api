@@ -1,8 +1,8 @@
-package com.alessandro54.jwtspring.api;
+package com.evoteam.eatsave.api;
 
-import com.alessandro54.jwtspring.domain.Role;
-import com.alessandro54.jwtspring.domain.User;
-import com.alessandro54.jwtspring.service.UserService;
+import com.evoteam.eatsave.api.domain.models.Role;
+import com.evoteam.eatsave.api.domain.models.User;
+import com.evoteam.eatsave.api.service.UserService;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;

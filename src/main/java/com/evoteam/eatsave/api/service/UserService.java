@@ -1,7 +1,7 @@
-package com.evoteam.eatsave.service;
+package com.evoteam.eatsave.api.service;
 
-import com.evoteam.eatsave.domain.Role;
-import com.evoteam.eatsave.domain.User;
+import com.evoteam.eatsave.api.domain.models.Role;
+import com.evoteam.eatsave.api.domain.models.User;
 
 import java.util.List;
 

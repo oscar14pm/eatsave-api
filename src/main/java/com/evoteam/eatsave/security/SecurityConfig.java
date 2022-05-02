@@ -1,7 +1,7 @@
-package com.alessandro54.jwtspring.security;
+package com.evoteam.eatsave.security;
 
-import com.alessandro54.jwtspring.filter.CustomAuthenticationFilter;
-import com.alessandro54.jwtspring.filter.CustomAuthorizationFilter;
+import com.evoteam.eatsave.filter.CustomAuthenticationFilter;
+import com.evoteam.eatsave.filter.CustomAuthorizationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,8 +35,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         filter.setFilterProcessesUrl("/api/login");
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(STATELESS);
+        http.authorizeRequests().antMatchers("/").permitAll();
         http.authorizeRequests().antMatchers("/api/login/**", "/api/token/refresh/**").permitAll();
-        http.authorizeRequests().antMatchers(GET, "/api/user/**").hasAnyAuthority("ROLE_USER");
+        http.authorizeRequests().antMatchers(
+                "/swagger-resources/**",
+                "/swagger-ui/**",
+                "/v2/api-docs/**",
+                "/webjars/**").permitAll();
+        http.authorizeRequests().antMatchers(GET, "/api/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_CLIENT");
+        http.authorizeRequests().antMatchers(GET, "/api/consultant/**").hasAnyAuthority("ROLE_ADMIN","ROLE_CONSULTANT");
         http.authorizeRequests().antMatchers(GET, "/api/user/create/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().anyRequest().authenticated();
         http
