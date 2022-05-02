@@ -24,7 +24,10 @@ public class User {
     private Long id;
 
     @NotNull @NotBlank
-    private String name;
+    private String firstName;
+
+    @NotNull @NotBlank
+    private String lastName;
 
     @NotNull @NotBlank
     @Column(unique = true)

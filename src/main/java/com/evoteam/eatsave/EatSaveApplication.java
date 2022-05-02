@@ -22,20 +22,4 @@ public class EatSaveApplication {
     BCryptPasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
     }
-    @Bean
-    CommandLineRunner run(UserService userService) {
-        return args -> {
-            userService.saveRole(new Role(null, "ROLE_CONSULTANT"));
-            userService.saveRole(new Role(null, "ROLE_CLIENT"));
-            userService.saveRole(new Role(null, "ROLE_ADMIN"));
-
-            userService.saveUser(new User(null, "John", "john", "1234", new ArrayList<>()));
-            userService.saveUser(new User(null, "Alessandro", "hyper", "12345", new ArrayList<>()));
-
-            userService.addRoleToUser("hyper", "ROLE_ADMIN");
-            userService.addRoleToUser("hyper", "ROLE_CLIENT");
-            userService.addRoleToUser("john", "ROLE_CONSULTANT");
-        };
-    }
-
 }
