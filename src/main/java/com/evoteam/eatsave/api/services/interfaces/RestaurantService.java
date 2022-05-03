@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface RestaurantService {
     List<Restaurant> getRestaurants ();
-    Restaurant getRestaurant (String businessName);
+    Restaurant getRestaurant (String internalId);
     Restaurant createRestaurant(Restaurant restaurant);
 }
