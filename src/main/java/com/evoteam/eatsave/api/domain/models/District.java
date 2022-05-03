@@ -23,8 +23,4 @@ public class District {
     @NotNull @NotBlank
     @Column(unique = true)
     private String name;
-
-    @ManyToOne
-    @JoinColumn(name = "province_id")
-    private Province province;
 }

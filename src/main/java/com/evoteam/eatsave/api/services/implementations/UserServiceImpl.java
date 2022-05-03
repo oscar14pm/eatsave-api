@@ -1,9 +1,10 @@
-package com.evoteam.eatsave.api.service;
+package com.evoteam.eatsave.api.services.implementations;
 
 import com.evoteam.eatsave.api.domain.models.Role;
 import com.evoteam.eatsave.api.domain.persistence.RoleRepository;
 import com.evoteam.eatsave.api.domain.persistence.UserRepository;
 import com.evoteam.eatsave.api.domain.models.User;
+import com.evoteam.eatsave.api.services.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

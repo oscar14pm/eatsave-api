@@ -1,4 +1,4 @@
-package com.evoteam.eatsave.api.service;
+package com.evoteam.eatsave.api.services.interfaces;
 
 import com.evoteam.eatsave.api.domain.models.Role;
 import com.evoteam.eatsave.api.domain.models.User;

@@ -1,7 +1,8 @@
-package com.evoteam.eatsave.api.service;
+package com.evoteam.eatsave.api.services.implementations;
 
 import com.evoteam.eatsave.api.domain.models.District;
 import com.evoteam.eatsave.api.domain.persistence.DistrictRepository;
+import com.evoteam.eatsave.api.services.interfaces.DistrictsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

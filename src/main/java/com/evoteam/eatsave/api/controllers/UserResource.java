@@ -1,8 +1,8 @@
-package com.evoteam.eatsave.api;
+package com.evoteam.eatsave.api.controllers;
 
 import com.evoteam.eatsave.api.domain.models.Role;
 import com.evoteam.eatsave.api.domain.models.User;
-import com.evoteam.eatsave.api.service.UserService;
+import com.evoteam.eatsave.api.services.interfaces.UserService;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;

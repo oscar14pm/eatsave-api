@@ -20,7 +20,7 @@ public class Restaurant {
     private Long id;
 
     @Column(unique = true)
-    private String internal_id;
+    private String internalId;
 
     private String description;
 
@@ -34,7 +34,7 @@ public class Restaurant {
     @Min(-180L) @Max(180L)
     private Double longitude;
 
-    @OneToOne
+    @ManyToOne
     private District district;
 
 }
