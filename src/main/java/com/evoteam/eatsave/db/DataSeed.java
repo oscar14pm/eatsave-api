@@ -59,8 +59,11 @@ public class DataSeed implements CommandLineRunner {
         provinceService.addDistrictToProvince("Lima", "Contract");
     }
     private void createRestaurants() {
-        restaurantService.createRestaurant(new Restaurant(null, "ALENKAS_1", "ASDF", "Jr. Lima", -12.0638284,-77.0749729, districtsService.getDistrict("St. Michael")));
-        restaurantService.createRestaurant(new Restaurant(null, "ALENKAS_2", "ASDF", "Jr. Lima", -9.0632384,-35.0749729, districtsService.getDistrict("Test 123")));
+        restaurantService.createRestaurant(new Restaurant(null, "ALENKAS_1", "ASDF", "Jr. Benavides", -12.0638284,-77.0749729, districtsService.getDistrict("St. Michael")));
+        restaurantService.createRestaurant(new Restaurant(null, "ALENKAS_2", "ASDF", "Av. Mecanica", -9.0632384,-35.0749729, districtsService.getDistrict("Test 123")));
         restaurantService.createRestaurant(new Restaurant(null, "ALENKAS_3", "ASDF", "Jr. Lima", -17.0638284,-79.0745729, districtsService.getDistrict("Contract")));
+    }
+    private void createClients() {
+
     }
 }
