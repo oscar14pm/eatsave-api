@@ -28,7 +28,7 @@ public class RestaurantsController {
     }
     @PostMapping("/create")
     public ResponseEntity<?> createRestaurant(@RequestBody Map<String, String> payload) throws Exception {
-        if (restaurantService.getRestaurant(payload.get("internalId")) != null) {
+        if (restaurantService.getRestaurant(payload.get("internalId")) == null) {
             Restaurant restaurant = restaurantService.createRestaurant(
                     new Restaurant(
                             null,
