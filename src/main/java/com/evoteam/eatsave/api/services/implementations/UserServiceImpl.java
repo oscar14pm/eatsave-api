@@ -1,5 +1,9 @@
 package com.evoteam.eatsave.api.services.implementations;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.evoteam.eatsave.api.domain.models.Role;
 import com.evoteam.eatsave.api.domain.persistence.RoleRepository;
 import com.evoteam.eatsave.api.domain.persistence.UserRepository;
@@ -7,6 +11,7 @@ import com.evoteam.eatsave.api.domain.models.User;
 import com.evoteam.eatsave.api.services.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -66,6 +71,16 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public User getUser(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public User getCurrentUser(String authorizationHeader) {
+        String token = authorizationHeader.substring("Bearer ".length());
+        Algorithm algorithm = Algorithm.HMAC256(System.getenv("JWT_SECRET").getBytes());
+        JWTVerifier verifier = JWT.require(algorithm).build();
+        DecodedJWT decodedJWT = verifier.verify(token);
+        String username = decodedJWT.getSubject();
+        return getUser(username);
     }
 
     @Override

@@ -37,4 +37,7 @@ public class Restaurant {
     @ManyToOne
     private District district;
 
+//    @ManyToOne
+//    @JoinColumn(name="client_id", nullable = false)
+//    private Client client;
 }

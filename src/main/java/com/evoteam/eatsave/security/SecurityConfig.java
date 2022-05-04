@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
@@ -37,11 +38,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(STATELESS);
         http.authorizeRequests().antMatchers("/").permitAll();
         http.authorizeRequests().antMatchers("/api/login/**", "/api/token/refresh/**").permitAll();
-        http.authorizeRequests().antMatchers(
-                "/swagger-resources/**",
-                "/swagger-ui/**",
-                "/v2/api-docs/**",
-                "/webjars/**").permitAll();
+        http.authorizeRequests().antMatchers(POST, "/api/clients/**").permitAll(); // Create new client
+        http.authorizeRequests().antMatchers("/swagger-resources/**", "/swagger-ui/**", "/v2/api-docs/**", "/webjars/**").permitAll(); // Swagger Utils
         http.authorizeRequests().antMatchers("/api/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_CLIENT");
         http.authorizeRequests().antMatchers(GET, "/api/consultant/**").hasAnyAuthority("ROLE_ADMIN","ROLE_CONSULTANT");
         http.authorizeRequests().antMatchers(GET, "/api/user/create/**").hasAnyAuthority("ROLE_ADMIN");

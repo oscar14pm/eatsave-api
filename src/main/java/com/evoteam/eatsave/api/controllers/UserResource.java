@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -88,6 +89,15 @@ public class UserResource {
         } else {
             throw new RuntimeException("Refresh token is missing");
         }
+    }
+    @GetMapping("/user/current")
+    public ResponseEntity<User> getCurrentUser(@RequestHeader("Authorization") String authHeader) {
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            User foundUser = userService.getCurrentUser(authHeader);
+            return ResponseEntity.ok(foundUser);
+        }
+        else
+            return (ResponseEntity<User>) ResponseEntity.notFound();
     }
 
     @Data
