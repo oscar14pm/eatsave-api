@@ -36,8 +36,12 @@ public class RestaurantsController {
         }
     }
     @PostMapping
-    public ResponseEntity<?> createRestaurant(@RequestBody Map<String, String> payload) throws Exception {
+    public ResponseEntity<?> createRestaurant(
+            @RequestBody Map<String, String> payload,
+            @RequestHeader("Authorization") String authHeader
+    ) throws Exception {
         if (restaurantService.getRestaurant(payload.get("internalId")) == null) {
+            payload.put("token", authHeader);
             Restaurant restaurant = restaurantService.buildRestaurant(payload);
             URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/restaurants/create").toUriString());
             return ResponseEntity.created(uri).body(restaurant);

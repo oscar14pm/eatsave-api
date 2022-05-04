@@ -30,14 +30,11 @@ public class Restaurant {
     @NotBlank @NotNull
     @DecimalMin("-90.0") @Max(90L)
     private Double latitude;
+
     @NotBlank @NotNull
     @Min(-180L) @Max(180L)
     private Double longitude;
 
     @ManyToOne
     private District district;
-
-//    @ManyToOne
-//    @JoinColumn(name="client_id", nullable = false)
-//    private Client client;
 }

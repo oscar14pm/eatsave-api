@@ -18,7 +18,6 @@ import java.util.Map;
 public class ClientController {
     private final ClientService clientService;
     private final UserService userService;
-
     @PostMapping
     public ResponseEntity<Client> createClient(@RequestBody Map<String, String> payload) {
         if (userService.getUser(payload.get("username")) == null) {

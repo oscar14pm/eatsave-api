@@ -1,7 +1,11 @@
 package com.evoteam.eatsave.api.services.implementations;
 
+import com.evoteam.eatsave.api.domain.models.Client;
 import com.evoteam.eatsave.api.domain.models.Restaurant;
+import com.evoteam.eatsave.api.domain.models.User;
+import com.evoteam.eatsave.api.domain.persistence.ClientRepository;
 import com.evoteam.eatsave.api.domain.persistence.RestaurantRepository;
+import com.evoteam.eatsave.api.services.interfaces.ClientService;
 import com.evoteam.eatsave.api.services.interfaces.DistrictsService;
 import com.evoteam.eatsave.api.services.interfaces.RestaurantService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +22,7 @@ import java.util.Map;
 @Slf4j
 public class RestaurantServiceImpl implements RestaurantService {
     private final RestaurantRepository restaurantRepository;
+    private final ClientService clientService;
     private final DistrictsService districtsService;
     @Override
     public List<Restaurant> getRestaurants() {
@@ -36,15 +41,17 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public Restaurant buildRestaurant(Map<String, String> payload) {
-        return  createRestaurant(
-                new Restaurant(
-                        null,
-                        payload.get("internalId"),
-                        payload.get("description"),
-                        payload.get("address"),
-                        Double.parseDouble(payload.get("latitude")),
-                        Double.parseDouble(payload.get("longitude")),
-                        districtsService.getDistrict(payload.get("district"))
+        Client loadedClient = clientService.loadClient(payload.get("token"));
+        Restaurant newRestaurant = createRestaurant(new Restaurant(
+                null,
+                payload.get("internalId"),
+                payload.get("description"),
+                payload.get("address"),
+                Double.parseDouble(payload.get("latitude")),
+                Double.parseDouble(payload.get("longitude")),
+                districtsService.getDistrict(payload.get("district"))
         ));
+        clientService.addRestaurantToClient(loadedClient, payload.get("internalId"));
+        return  newRestaurant;
     }
 }
