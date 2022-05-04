@@ -4,7 +4,6 @@ import com.evoteam.eatsave.api.domain.models.Client;
 import com.evoteam.eatsave.api.services.interfaces.ClientService;
 import com.evoteam.eatsave.api.services.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -22,7 +21,7 @@ public class ClientController {
     public ResponseEntity<Client> createClient(@RequestBody Map<String, String> payload) {
         if (userService.getUser(payload.get("username")) == null) {
             URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/clients").toUriString());
-            return ResponseEntity.created(uri).body(clientService.createClient(payload));
+            return ResponseEntity.created(uri).body(clientService.createClient(clientService.buildClient(payload)));
         } else {
             return (ResponseEntity<Client>) ResponseEntity.badRequest();
         }

@@ -52,6 +52,6 @@ public class RestaurantServiceImpl implements RestaurantService {
                 districtsService.getDistrict(payload.get("district"))
         ));
         clientService.addRestaurantToClient(loadedClient, payload.get("internalId"));
-        return  newRestaurant;
+        return newRestaurant;
     }
 }

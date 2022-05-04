@@ -14,7 +14,6 @@ import org.mockito.MockitoAnnotations;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
 import static org.mockito.Mockito.when;
 
 class RestaurantServiceTest {
@@ -26,7 +25,7 @@ class RestaurantServiceTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        var district = new District(null, "Test 1");
+        District district = new District(null, "Test 1");
         res = new Restaurant(null, "CHICKEN_1", "Chicken and Peru-Fusion", "Jr. Benavides", -12.0638284,-77.0749729, district);
         res2 = new Restaurant(null, "TERMINAL", "Good Sushi Restaurant", "Jr. Benavides", -12.0638284,-77.0749729, district);
     }

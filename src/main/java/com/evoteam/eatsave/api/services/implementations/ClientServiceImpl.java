@@ -23,9 +23,8 @@ public class ClientServiceImpl implements ClientService {
     private final RestaurantRepository restaurantRepository;
     private final UserService userService;
     @Override
-    public Client createClient(Map<String, String> payload) {
-        Client createdClient = buildClient(payload);
-        return clientRepository.save(createdClient);
+    public Client createClient(Client client) {
+        return clientRepository.save(client);
     }
 
     @Override
@@ -39,7 +38,7 @@ public class ClientServiceImpl implements ClientService {
         Restaurant loadedRestaurant = restaurantRepository.findByInternalId(restaurant);
         client.getRestaurants().add(loadedRestaurant);
     }
-
+    @Override
     public Client buildClient(Map<String, String> payload) {
         User user = userService.createUser(new User(
                 null,
