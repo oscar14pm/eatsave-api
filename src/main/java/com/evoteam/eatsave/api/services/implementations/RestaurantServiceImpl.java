@@ -2,6 +2,7 @@ package com.evoteam.eatsave.api.services.implementations;
 
 import com.evoteam.eatsave.api.domain.models.Restaurant;
 import com.evoteam.eatsave.api.domain.persistence.RestaurantRepository;
+import com.evoteam.eatsave.api.services.interfaces.DistrictsService;
 import com.evoteam.eatsave.api.services.interfaces.RestaurantService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -16,6 +18,7 @@ import java.util.List;
 @Slf4j
 public class RestaurantServiceImpl implements RestaurantService {
     private final RestaurantRepository restaurantRepository;
+    private final DistrictsService districtsService;
     @Override
     public List<Restaurant> getRestaurants() {
         return restaurantRepository.findAll();
@@ -29,5 +32,19 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public Restaurant createRestaurant(Restaurant restaurant) {
         return restaurantRepository.save(restaurant);
+    }
+
+    @Override
+    public Restaurant buildRestaurant(Map<String, String> payload) {
+        return  createRestaurant(
+                new Restaurant(
+                        null,
+                        payload.get("internalId"),
+                        payload.get("description"),
+                        payload.get("address"),
+                        Double.parseDouble(payload.get("latitude")),
+                        Double.parseDouble(payload.get("longitude")),
+                        districtsService.getDistrict(payload.get("district"))
+        ));
     }
 }
