@@ -7,7 +7,6 @@ import com.evoteam.eatsave.api.services.implementations.UserServiceImpl;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ClientRegisterSteps {
+public class ClientRegistration {
     @Autowired
     private ClientServiceImpl clientService;
     @Autowired
@@ -51,4 +50,5 @@ public class ClientRegisterSteps {
     private void validateUsernames(String username) {
         Assertions.assertNotNull(userService.getUser(username));
     }
+
 }
