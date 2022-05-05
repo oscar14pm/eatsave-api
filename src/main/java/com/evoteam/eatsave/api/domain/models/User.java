@@ -11,6 +11,7 @@ import java.util.Collection;
 
 import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Getter
@@ -20,7 +21,7 @@ import static javax.persistence.GenerationType.AUTO;
 @AllArgsConstructor
 @Table(name="users", schema = "public")
 public class User {
-    @Id @GeneratedValue(strategy = AUTO)
+    @Id @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
     @NotNull @NotBlank

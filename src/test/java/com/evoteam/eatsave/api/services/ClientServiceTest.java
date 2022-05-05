@@ -4,7 +4,6 @@ import com.evoteam.eatsave.api.domain.models.Client;
 import com.evoteam.eatsave.api.domain.models.User;
 import com.evoteam.eatsave.api.domain.persistence.ClientRepository;
 import com.evoteam.eatsave.api.services.implementations.ClientServiceImpl;
-import com.evoteam.eatsave.api.services.interfaces.ClientService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
